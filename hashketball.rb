@@ -137,8 +137,8 @@ def num_points_scored player_search
 end
 
 def shoe_size(name)
-  game_hash.map do |team, team_info|
-    team_info[:players].map do |player|
+  game_hash.map do |team, team_data|
+    team_data[:players].map do |player|
       if player[:player_name] == name
         return player[:shoe]
       end
