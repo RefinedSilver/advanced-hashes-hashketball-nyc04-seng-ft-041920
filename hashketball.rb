@@ -127,8 +127,8 @@ def game_hash
 end
 
 def num_points_scored(player_search)
-  game_hash.each do |team, team_info|
-    team_info[:players].each do |player|
+  game_hash.map do |team, team_info|
+    team_info[:players].map do |player|
       if player[:player_name] == player_search
         return player[:points]
       end
@@ -137,8 +137,8 @@ def num_points_scored(player_search)
 end
 
 def shoe_size(name)
-  game_hash.each do |team, team_info|
-    team_info[:players].each do |player|
+  game_hash.map do |team, team_info|
+    team_info[:players].map do |player|
       if player[:player_name] == name
         return player[:shoe]
       end
@@ -162,11 +162,11 @@ end
 
 def player_numbers data
   results = []
-  game_hash.each do |team, team_info|
+  game_hash.map do |team, team_info|
     if team_info[:team_name] == data
-      team_info.each do |key, value|
+      team_info.map do |key, value|
         if key == :players
-          value.each do |player|
+          value.map do |player|
             results << player[:number]
           end
         end
@@ -177,10 +177,10 @@ def player_numbers data
 end
 
 def player_stats input
-  game_hash.each do |team, team_info|
-    team_info.each do |key, value|
+  game_hash.map do |team, team_info|
+    team_info.map do |key, value|
       if key == :players
-        value.each do |player|
+        value.map do |player|
           if input == player[:player_name]
             return player
           end
@@ -193,8 +193,8 @@ end
 def big_shoe_rebounds
   big_shoe = 0
   rebounds = 0
-  game_hash.each do |team, team_info|
-    team_info[:players].each do |player|
+  game_hash.map do |team, team_info|
+    team_info[:players].map do |player|
       if player[:shoe] > big_shoe
         big_shoe = player[:shoe]
         rebounds = player[:rebounds]
