@@ -188,7 +188,6 @@ def player_stats input
       end
     end
   end
-
 end
 
 def big_shoe_rebounds
