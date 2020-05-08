@@ -163,7 +163,7 @@ end
 def player_numbers data
   results = []
   game_hash.map do |team, team_data|
-    if team_info[:team_name] == data
+    if team_data[:team_name] == data
       team_info.map do |key, value|
         if key == :players
           value.map do |player|
