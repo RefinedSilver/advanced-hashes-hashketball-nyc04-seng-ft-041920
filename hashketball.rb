@@ -136,7 +136,7 @@ def num_points_scored player_search
   end
 end
 
-def shoe_size(name)
+def shoe_size name
   game_hash.map do |team, team_data|
     team_data[:players].map do |player|
       if player[:player_name] == name
@@ -146,7 +146,7 @@ def shoe_size(name)
   end
 end
 
-def team_colors(team_input)
+def team_colors team_input
   if team_input.downcase! == "charlotte hornets"
     return game_hash[:away][:colors]
   else
