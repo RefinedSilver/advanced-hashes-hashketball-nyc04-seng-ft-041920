@@ -126,9 +126,9 @@ def game_hash
   }
 end
 
-def num_points_scored(player_search)
-  game_hash.map do |team, team_info|
-    team_info[:players].map do |player|
+def num_points_scored player_search
+  game_hash.map do |team, team_data|
+    team_data[:players].map do |player|
       if player[:player_name] == player_search
         return player[:points]
       end
@@ -136,9 +136,9 @@ def num_points_scored(player_search)
   end
 end
 
-def shoe_size(name)
-  game_hash.map do |team, team_info|
-    team_info[:players].map do |player|
+def shoe_size name
+  game_hash.map do |team, team_data|
+    team_data[:players].map do |player|
       if player[:player_name] == name
         return player[:shoe]
       end
@@ -146,8 +146,8 @@ def shoe_size(name)
   end
 end
 
-def team_colors(team_input)
-  if team_input.downcase! == "charlotte hornets"
+def team_colors team_data
+  if team_data.downcase! == "charlotte hornets"
     return game_hash[:away][:colors]
   else
     return game_hash[:home][:colors]
@@ -155,16 +155,16 @@ def team_colors(team_input)
 end
 
 def team_names
-  game_hash.map do |team, team_info|
-    team_info[:team_name]
+  game_hash.map do |team, team_data|
+    team_data[:team_name]
   end
 end
 
 def player_numbers data
   results = []
-  game_hash.map do |team, team_info|
-    if team_info[:team_name] == data
-      team_info.map do |key, value|
+  game_hash.map do |team, team_data|
+    if team_data[:team_name] == data
+      team_data.map do |key, value|
         if key == :players
           value.map do |player|
             results << player[:number]
@@ -177,8 +177,8 @@ def player_numbers data
 end
 
 def player_stats input
-  game_hash.map do |team, team_info|
-    team_info.map do |key, value|
+  game_hash.map do |team, team_data|
+    team_data.map do |key, value|
       if key == :players
         value.map do |player|
           if input == player[:player_name]
@@ -193,8 +193,8 @@ end
 def big_shoe_rebounds
   big_shoe = 0
   rebounds = 0
-  game_hash.map do |team, team_info|
-    team_info[:players].map do |player|
+  game_hash.map do |team, team_data|
+    team_data[:players].map do |player|
       if player[:shoe] > big_shoe
         big_shoe = player[:shoe]
         rebounds = player[:rebounds]
