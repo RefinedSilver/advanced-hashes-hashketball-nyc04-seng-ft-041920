@@ -177,8 +177,8 @@ def player_numbers data
 end
 
 def player_stats input
-  game_hash.map do |team, team_info|
-    team_info.map do |key, value|
+  game_hash.map do |team, team_data|
+    team_data.map do |key, value|
       if key == :players
         value.map do |player|
           if input == player[:player_name]
@@ -193,8 +193,8 @@ end
 def big_shoe_rebounds
   big_shoe = 0
   rebounds = 0
-  game_hash.map do |team, team_info|
-    team_info[:players].map do |player|
+  game_hash.map do |team, team_data|
+    team_data[:players].map do |player|
       if player[:shoe] > big_shoe
         big_shoe = player[:shoe]
         rebounds = player[:rebounds]
